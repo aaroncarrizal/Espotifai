@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingHorizontal="@dimen/common_padding_default"
+    android:paddingVertical="@dimen/common_padding_default"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <ImageView
+        android:id="@+id/IvCover"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        tools:src="@drawable/ic_launcher_background"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+
+        />
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/common_padding_min"
+        app:layout_constraintStart_toEndOf="@+id/IvCover"
+        app:layout_constraintTop_toTopOf="@id/IvCover"
+        app:layout_constraintBottom_toTopOf="@+id/tvAuthor"
+
+        tools:text="Titulo de Cancionsssssssssssssssssssssssssssssssssssss"
+        android:textSize="8pt"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:textStyle="bold"
+        android:textColor="@color/white"/>
+    <TextView
+        android:id="@+id/tvAuthor"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        tools:text="Artista"
+        android:textSize="6pt"
+        android:ellipsize="end"
+        android:maxLines="1"
+        app:layout_constraintTop_toBottomOf="@+id/tvTitle"
+        app:layout_constraintStart_toStartOf="@+id/tvTitle"
+        app:layout_constraintBottom_toBottomOf="@id/IvCover"
+        android:textColor="@color/white"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

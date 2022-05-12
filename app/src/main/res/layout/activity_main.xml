@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/containerMain"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:background="@color/darkGrey">
+
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="My songs"
+        android:textStyle="bold"
+        android:textSize="16pt"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:padding="@dimen/common_padding_default"
+        android:textColor="@color/white"
+        />
+    <TextView
+        android:id="@+id/tvCount"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/tvTitle"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:text="99999 songs"
+        android:textColor="@color/white"
+        android:paddingHorizontal="@dimen/common_padding_default"/>
+
+    <ListView
+        android:id="@+id/recyclerView2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        tools:listitem="@layout/item_song"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvCount"
+        />
+
+    <com.google.android.material.bottomappbar.BottomAppBar
+        android:id="@+id/bottomAppBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_margin="@dimen/common_padding_min"
+        android:padding="@dimen/common_padding_min">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/ivCoverMini"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                tools:src="@drawable/ic_launcher_background"/>
+
+            <TextView
+                android:id="@+id/tvTitleMini"
+                android:layout_width="240dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toEndOf="@+id/ivCoverMini"
+                app:layout_constraintTop_toTopOf="@+id/ivCoverMini"
+                app:layout_constraintBottom_toTopOf="@+id/tvAuthorMini"
+                android:layout_marginHorizontal="@dimen/common_padding_min"
+
+                tools:text="titulooooooo"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:textStyle="bold"
+                android:textSize="6pt" />
+
+            <TextView
+                android:id="@+id/tvAuthorMini"
+                android:layout_width="240dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="@+id/tvTitleMini"
+                app:layout_constraintTop_toBottomOf="@id/tvTitleMini"
+                app:layout_constraintBottom_toBottomOf="@+id/ivCoverMini"
+
+                tools:text="artistaaaaaa"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:textSize="5pt" />
+
+            <ImageButton
+                android:id="@+id/btnPlay"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginEnd="@dimen/common_padding_default"
+                android:src="@drawable/ic_pause" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+    </com.google.android.material.bottomappbar.BottomAppBar>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
