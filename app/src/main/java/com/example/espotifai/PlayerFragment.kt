@@ -15,6 +15,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_player.*
 import kotlinx.android.synthetic.main.item_song.view.*
 import java.lang.Exception
+import java.lang.NullPointerException
 import kotlin.random.Random
 
 class PlayerFragment : Fragment() {
@@ -33,7 +34,6 @@ class PlayerFragment : Fragment() {
         mbinding = FragmentPlayerBinding.inflate(inflater, container, false)
         return mbinding.root
     }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         mActivity = activity as? MainActivity
@@ -93,21 +93,21 @@ class PlayerFragment : Fragment() {
             override fun onStopTrackingTouch(p0: SeekBar?) {
             }
         })
-
-        runnable = Runnable {
-            seekbar.progress = mp!!.currentPosition
+        try{
+            runnable = Runnable {
+                seekbar.progress = mp!!.currentPosition
+                handler.postDelayed(runnable, 1000)
+            }
             handler.postDelayed(runnable, 1000)
-        }
-        handler.postDelayed(runnable, 1000)
-        mp!!.setOnCompletionListener {
-            seekbar.progress = 0
-        }
 
 
-        mp!!.setOnCompletionListener{
-            playNext()
-        }
+            mp!!.setOnCompletionListener {
+                seekbar.progress = 0
+                playNext()
+            }
+        }catch (e: Exception){
 
+        }
 
 
     }
@@ -131,8 +131,15 @@ class PlayerFragment : Fragment() {
         }
         mActivity?.playSong(position!!)
         //actualiza el mp según el mp del mainActivity
+        refreshMp()
+    }
+    fun refreshMp(){
         mp = mActivity?.mp
         setData(position, songs)
+        mp!!.setOnCompletionListener {
+            seekbar.progress = 0
+            playNext()
+        }
     }
 
     fun setData(position: Int?, songs : ArrayList<SongInfo>?){

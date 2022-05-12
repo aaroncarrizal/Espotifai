@@ -163,6 +163,8 @@ class MainActivity : AppCompatActivity(), MainAux {
             mp!!.prepare()
             mp!!.start()
             btnPlay.setImageResource(R.drawable.ic_pause)
+
+
         }catch (e: Exception){
         }
     }
