@@ -62,7 +62,8 @@ class PlayerFragment : Fragment() {
             }
 
         }
-
+        tvTitleGrande.isSelected = true
+        tvAuthorGrande.isSelected = true
         //cancion siguiente
         btnNext.setOnClickListener{
             playNext()

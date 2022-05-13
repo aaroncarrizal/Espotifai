@@ -32,6 +32,7 @@
         android:paddingHorizontal="@dimen/common_padding_default"/>
 
     <ListView
+        android:layout_marginTop="@dimen/common_padding_default"
         android:id="@+id/recyclerView2"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -48,7 +49,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         android:layout_margin="@dimen/common_padding_min"
-        android:padding="@dimen/common_padding_min">
+        android:padding="@dimen/common_padding_min"
+        android:backgroundTint="@color/darkGrey">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -73,10 +75,14 @@
                 android:layout_marginHorizontal="@dimen/common_padding_min"
 
                 tools:text="titulooooooo"
-                android:ellipsize="end"
-                android:maxLines="1"
+                android:singleLine="true"
+                android:scrollHorizontally="true"
+                android:marqueeRepeatLimit="1"
+                android:ellipsize="marquee"
+                android:fadingEdge="horizontal"
                 android:textStyle="bold"
-                android:textSize="6pt" />
+                android:textSize="6pt"
+                android:textColor="@color/white"/>
 
             <TextView
                 android:id="@+id/tvAuthorMini"
@@ -87,9 +93,13 @@
                 app:layout_constraintBottom_toBottomOf="@+id/ivCoverMini"
 
                 tools:text="artistaaaaaa"
-                android:ellipsize="end"
-                android:maxLines="1"
-                android:textSize="5pt" />
+                android:singleLine="true"
+                android:scrollHorizontally="true"
+                android:marqueeRepeatLimit="1"
+                android:ellipsize="marquee"
+                android:fadingEdge="horizontal"
+                android:textSize="5pt"
+                android:textColor="@color/white"/>
 
             <ImageButton
                 android:id="@+id/btnPlay"
@@ -99,7 +109,8 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
                 android:layout_marginEnd="@dimen/common_padding_default"
-                android:src="@drawable/ic_pause" />
+                android:src="@drawable/ic_pause"
+                android:background="@color/darkGrey"/>
         </androidx.constraintlayout.widget.ConstraintLayout>
 
 

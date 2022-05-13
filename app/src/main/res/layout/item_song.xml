@@ -5,13 +5,14 @@
     android:paddingHorizontal="@dimen/common_padding_default"
     android:paddingVertical="@dimen/common_padding_default"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:background="@color/darkGrey">
 
     <ImageView
         android:id="@+id/IvCover"
         android:layout_width="50dp"
         android:layout_height="50dp"
-        tools:src="@drawable/ic_launcher_background"
+        tools:src="@drawable/ic_play_circle"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
 
@@ -27,8 +28,11 @@
 
         tools:text="Titulo de Cancionsssssssssssssssssssssssssssssssssssss"
         android:textSize="8pt"
-        android:ellipsize="end"
-        android:maxLines="1"
+        android:singleLine="true"
+        android:scrollHorizontally="true"
+        android:marqueeRepeatLimit="1"
+        android:ellipsize="marquee"
+        android:fadingEdge="horizontal"
         android:textStyle="bold"
         android:textColor="@color/white"/>
     <TextView
@@ -37,8 +41,11 @@
         android:layout_height="wrap_content"
         tools:text="Artista"
         android:textSize="6pt"
-        android:ellipsize="end"
-        android:maxLines="1"
+        android:singleLine="true"
+        android:scrollHorizontally="true"
+        android:marqueeRepeatLimit="1"
+        android:ellipsize="marquee"
+        android:fadingEdge="horizontal"
         app:layout_constraintTop_toBottomOf="@+id/tvTitle"
         app:layout_constraintStart_toStartOf="@+id/tvTitle"
         app:layout_constraintBottom_toBottomOf="@id/IvCover"

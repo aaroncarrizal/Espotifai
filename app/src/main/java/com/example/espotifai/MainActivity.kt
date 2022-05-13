@@ -175,6 +175,8 @@ class MainActivity : AppCompatActivity(), MainAux {
         ivCoverMini.setImageBitmap(bitmap)
         tvAuthorMini.setText(songs[pos].author)
         tvTitleMini.setText(songs[pos].title)
+        tvTitleMini.isSelected = true
+        tvAuthorMini.isSelected = true
     }
     fun playNext(){
         position = position!! + 1
