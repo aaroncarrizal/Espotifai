@@ -9,13 +9,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.SeekBar
-import android.widget.Toast
 import com.example.espotifai.databinding.FragmentPlayerBinding
-import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_player.*
-import kotlinx.android.synthetic.main.item_song.view.*
-import java.lang.Exception
-import java.lang.NullPointerException
+import kotlin.NullPointerException
 import kotlin.random.Random
 
 class PlayerFragment : Fragment() {
@@ -29,11 +25,17 @@ class PlayerFragment : Fragment() {
     lateinit var runnable: Runnable
     private var handler = Handler()
 
+    //al momento de dar atras
+    override fun onDestroyView() {
+        handler.removeCallbacks(runnable)
+        super.onDestroyView()
+    }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         mbinding = FragmentPlayerBinding.inflate(inflater, container, false)
         return mbinding.root
     }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         mActivity = activity as? MainActivity
@@ -46,7 +48,6 @@ class PlayerFragment : Fragment() {
         }else{
             changePlayButton(false)
         }
-
 
         //reemplaza los datos génericos con los metadatos de la canción
         setData(position, songs)
@@ -93,28 +94,22 @@ class PlayerFragment : Fragment() {
             override fun onStopTrackingTouch(p0: SeekBar?) {
             }
         })
-        try{
-            runnable = Runnable {
-                seekbar.progress = mp!!.currentPosition
-                handler.postDelayed(runnable, 1000)
-            }
+        runnable = Runnable {
+            seekbar.progress = mp!!.currentPosition
             handler.postDelayed(runnable, 1000)
-
-
-            mp!!.setOnCompletionListener {
+        }
+        handler.postDelayed(runnable, 1000)
+        mp!!.setOnCompletionListener {
+            try{
                 seekbar.progress = 0
                 playNext()
+                //si genera NPE porque nunca se abrio el PlayerGrande
+            }catch (e: Exception){
+                mActivity?.playNext()
             }
-        }catch (e: Exception){
-
         }
-
-
     }
 
-    fun getRandom(max : Int) {
-        var next = Random.nextInt(0, max)
-    }
 
     fun changePlayButton(isPlaying:Boolean){
         if (isPlaying){

@@ -62,7 +62,7 @@ class MainActivity : AppCompatActivity(), MainAux {
         }
 
         //Se abre el Player grande cuando das click
-        bottomAppBar.setOnClickListener{
+        bottomAppBar.setOnClickListener {
             val fragment = PlayerFragment()
             val fragmentManager = supportFragmentManager
             val fragmentTransaction = fragmentManager.beginTransaction()
@@ -163,8 +163,9 @@ class MainActivity : AppCompatActivity(), MainAux {
             mp!!.prepare()
             mp!!.start()
             btnPlay.setImageResource(R.drawable.ic_pause)
-
-
+            mp!!.setOnCompletionListener {
+                playNext()
+            }
         }catch (e: Exception){
         }
     }
@@ -175,5 +176,12 @@ class MainActivity : AppCompatActivity(), MainAux {
         tvAuthorMini.setText(songs[pos].author)
         tvTitleMini.setText(songs[pos].title)
     }
-
+    fun playNext(){
+        position = position!! + 1
+        if(position!! >= songs!!.size) {
+            position = 0
+        }
+        playSong(position!!)
+        setDataMini(position!!)
+    }
 }
