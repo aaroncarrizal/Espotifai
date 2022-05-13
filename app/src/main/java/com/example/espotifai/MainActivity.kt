@@ -55,6 +55,8 @@ class MainActivity : AppCompatActivity(), MainAux {
 
             bottomAppBar.visibility = View.VISIBLE //Se hace visible el bottom app bar y se llenan los datos
             setDataMini(pos)
+            view.tvAuthor.isSelected = true
+            view.tvTitle.isSelected = true
         }
 
         btnPlay.setOnClickListener{
