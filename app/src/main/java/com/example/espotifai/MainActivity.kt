@@ -134,6 +134,9 @@ class MainActivity : AppCompatActivity(), MainAux {
                 var title = rs!!.getString(rs!!.getColumnIndex(MediaStore.Audio.Media.TITLE))
                 meta.setDataSource(url)
                 var cover = meta.embeddedPicture
+                if(cover?.size == null){
+                    cover = "[B@8b4a4bd".toByteArray()
+                }
                 songs.add(SongInfo(title,author,url,cover))
             }
         }
